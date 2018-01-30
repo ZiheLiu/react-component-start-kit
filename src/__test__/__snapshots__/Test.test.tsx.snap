@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text of Test should be correct 1`] = `
+<div>
+  hello, react-component-start-kit
+</div>
+`;

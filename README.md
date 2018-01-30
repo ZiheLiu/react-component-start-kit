@@ -8,7 +8,7 @@ Start kit for react component.
 
 - [x] storybook
 - [x] typescript
-- [ ] Jest
+- [x] Jest
 - [x] Tslint
 - [x] prettier
 
@@ -25,5 +25,9 @@ $ yarn build
 
 # run storybook server
 $ yarn storybook
+
+# run test
+# We only test files ended with .ts or .tsx
+$ yarn test
 ```
 

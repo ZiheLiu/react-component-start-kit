@@ -1,6 +1,11 @@
 {
   "presets": [
-    "react",
-    "es2015"
-  ]
+    ["env"],
+    "react"
+  ],
+  "env": {
+    "test": {
+      "presets": [["env"], "react"]
+    }
+  }
 }
