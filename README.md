@@ -10,7 +10,7 @@ Start kit for react component.
 - [x] typescript
 - [ ] Jest
 - [x] Tslint
-- [ ] prettier
+- [x] prettier
 
 
 
