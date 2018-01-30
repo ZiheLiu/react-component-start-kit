@@ -25,7 +25,19 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [require.resolve('ts-loader')],
-        include: paths.appSrc
+        include: paths.appSrc,
+        enforce: "pre"
+      },
+      {
+        test: /\.tsx?$/,
+        use: [{
+          loader: require.resolve('tslint-loader'),
+          options: {
+            typeCheck: true
+          }
+        }],
+        include: paths.appSrc,
+        enforce: "pre"
       }
     ]
   },

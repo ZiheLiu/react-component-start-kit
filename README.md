@@ -9,7 +9,7 @@ Start kit for react component.
 - [x] storybook
 - [x] typescript
 - [ ] Jest
-- [ ] Tslint
+- [x] Tslint
 - [ ] prettier
 
 
