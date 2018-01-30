@@ -32,14 +32,14 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({minimize:true}),
     new CleanWebpackPlugin(
-      //匹配删除的文件
+      // delete /dist
       [paths.dist],
       {
         root: paths.root,
-        //开启在控制台输出信息　　　　　　　　　
-        verbose:  true,
-        //启用删除文件　　　　　　　　
-        dry:      false
+        // output in shell　　　　　　　　　
+        verbose: true,
+        // open option of deleting　　
+        dry: false
       }
     )
   ],
