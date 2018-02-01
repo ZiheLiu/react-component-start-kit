@@ -11,6 +11,7 @@ Start kit for react component.
 - [x] Jest
 - [x] Tslint
 - [x] prettier
+- [x] less
 
 
 

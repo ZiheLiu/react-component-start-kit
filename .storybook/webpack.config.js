@@ -15,27 +15,40 @@ module.exports = (baseConfig, env) => {
 
   config.module.rules.push({
     test: /\.tsx?$/,
-    loader: require.resolve('ts-loader'),
+    use: [{ loader: 'ts-loader' }],
     include: paths.root,
     exclude: /node_modules/,
-    enforce: "pre"
+    enforce: 'pre'
   });
 
   config.module.rules.push({
     test: /\.tsx?$/,
-    use: [{
-      loader: require.resolve('tslint-loader'),
-      options: {
-        typeCheck: true,
-        tsConfigFile: path.resolve(paths.root, 'stories', 'tsconfig.json')
+    use: [
+      {
+        loader: require.resolve('tslint-loader'),
+        options: {
+          typeCheck: true,
+          tsConfigFile: path.resolve(paths.root, 'stories', 'tsconfig.json')
+        }
       }
-    }],
+    ],
     include: paths.root,
     exclude: /node_modules/,
-    enforce: "pre"
+    enforce: 'pre'
   });
 
-  config.resolve.extensions.push('.ts', '.tsx');
+  config.module.rules.push({
+    test: /\.less$/,
+    use: [
+      { loader: 'style-loader' },
+      { loader: 'css-loader' },
+      { loader: 'less-loader' }
+    ],
+    include: paths.root,
+    exclude: /node_modules/
+  });
+
+  config.resolve.extensions.push('.ts', '.tsx', 'less');
 
   return config;
 };
