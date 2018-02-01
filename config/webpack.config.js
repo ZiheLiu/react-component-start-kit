@@ -52,7 +52,17 @@ module.exports = {
       {
         test: /\.less$/,
         use: ExtractLess.extract({
-          use: [{ loader: 'css-loader' }, { loader: 'less-loader' }]
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true
+              }
+            },
+            {
+              loader: 'less-loader'
+            }
+          ]
         })
       }
     ]
