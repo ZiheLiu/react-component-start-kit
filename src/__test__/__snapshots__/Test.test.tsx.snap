@@ -2,6 +2,6 @@
 
 exports[`Test render correctly 1`] = `
 <div>
-  hello, react-component-start-kit
+  hello
 </div>
 `;

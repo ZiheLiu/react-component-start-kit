@@ -8,7 +8,7 @@
   "scripts": {
     "build": "webpack --config ./config/webpack.config.js",
     "test:watch": "jest --watch --verbose",
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint:src": "tslint --project tsconfig.json --config tslint.json",
@@ -88,12 +88,14 @@
     ],
     "globals": {
       "ts-jest": {
-        "useBabelrc": true
+        "useBabelrc": true,
+        "mapCoverage": true
       }
     },
     "setupTestFrameworkScriptFile": "./src/tests/setup.ts",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "mapCoverage": true
   }
 }
