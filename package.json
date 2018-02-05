@@ -15,6 +15,7 @@
     "lint:stories": "tslint --project ./stories/tsconfig.json --config tslint.json",
     "precommit": "npm run lint:src && npm run lint:stories && lint-staged"
   },
+  "typings": "typings/index.d.ts",
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.11",
     "@storybook/addon-links": "^3.3.11",
@@ -59,7 +60,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,css,ts,tsx}": [
-      "prettier-tslint --write",
+      "prettier-tslint fix",
       "git add"
     ]
   },
