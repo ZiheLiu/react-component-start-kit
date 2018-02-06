@@ -22,7 +22,8 @@
     "../dist",
     "../config",
     "../coverage",
-    "../build"
+    "../build",
+    "../storybook-static"
   ],
   "include": [
     "../**/*"

@@ -23,6 +23,7 @@
     "config",
     "stories",
     "coverage",
-    "build"
+    "build",
+    "storybook-static"
   ]
 }
