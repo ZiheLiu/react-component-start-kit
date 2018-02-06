@@ -11,9 +11,8 @@
     "test": "jest --verbose --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint:src": "tslint --project tsconfig.json --config tslint.json",
-    "lint:stories": "tslint --project ./stories/tsconfig.json --config tslint.json",
-    "precommit": "npm run lint:src && npm run lint:stories && lint-staged"
+    "lint:ts": "tsc --project ./stories/tsconfig.json && tslint --project ./stories/tsconfig.json --config tslint.json",
+    "precommit": "lint-staged"
   },
   "typings": "typings/index.d.ts",
   "devDependencies": {
@@ -59,8 +58,9 @@
     "webpack-node-externals": "^1.6.0"
   },
   "lint-staged": {
-    "*.{js,jsx,css,ts,tsx}": [
-      "prettier-tslint fix",
+    "*.{ts,tsx}": [
+      "lint:ts",
+      "prettier --write",
       "git add"
     ]
   },

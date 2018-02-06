@@ -22,6 +22,7 @@
     "dist",
     "config",
     "stories",
-    "coverage"
+    "coverage",
+    "build"
   ]
 }
