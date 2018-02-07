@@ -13,6 +13,9 @@ Start kit for react component.
 - [x] prettier
 - [x] less
 - [x] publish
+- [ ] don't import style in index.tsx
+- [x] produce .less .css .css.map .min.css .min.css.map
+- [ ] produce .less .css when run tsc
 
 
 
@@ -69,6 +72,10 @@ As a result, we set `include` with value `../**/*` instead in `./stories/tsconfi
 - The files in `include`, and not in `exclude`.
 - The files in `fiels`, with regards of `exclude.
 - The file which is imported in compiled file, even if it is not in `include`.
+
+### Webpack
+In order to produce both minify and unminify css and js, we use webpack two times.   
+It's ugly and ineffective, maybe we can use gulp with webpack.
 
 
 

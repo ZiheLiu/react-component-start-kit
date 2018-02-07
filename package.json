@@ -23,7 +23,7 @@
     "build:lib": "tsc --outDir lib",
     "build:es": "tsc -m es6 --outDir es",
     "clean": "rm -rf dist lib es build",
-    "build": "npm run clean && npm run build:lib && npm run build:es && webpack --config ./config/webpack.config.js",
+    "build": "npm run clean && npm run build:lib && npm run build:es && webpack --config ./config/webpack.config.js && NODE_ENV=production webpack --config ./config/webpack.config.js",
     "test:watch": "jest --watch --verbose",
     "test": "jest --verbose --coverage",
     "storybook": "start-storybook -p 6006",

@@ -4,23 +4,24 @@ const webpack = require('webpack');
 
 const nodeExternals = require('webpack-node-externals');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const PROD = process.env.NODE_ENV === 'production';
 
 const paths = require('./paths');
 
 const ExtractLess = new ExtractTextPlugin({
-  filename: paths.projectName + '.css'
+  filename: `${paths.projectName}${PROD ? '.min.css' : '.css'}`
 });
+
 
 module.exports = {
   entry: {
-    [`${paths.projectName}`]: paths.appIndexJS,
-    [`${paths.projectName}.min`]: paths.appIndexJS
+    [`${paths.projectName}`]: paths.appIndexJS
   },
   output: {
     path: paths.dist,
-    filename: '[name].js',
+    filename: PROD ? '[name].min.js' : '[name].js',
     libraryTarget: "umd",
     library: paths.projectName,
     umdNamedDefine: true
@@ -72,36 +73,33 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                minimize: true
+                minimize: PROD,
+                sourceMap: true
               }
             },
             {
-              loader: 'less-loader'
+              loader: 'less-loader',
+              options: {
+                sourceMap: true
+              }
             }
           ]
         })
       }
     ]
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      sourceMap: true,
-      include: /\.min\.js$/
-    }),
-    new CleanWebpackPlugin(
-      // delete /dist
-      [paths.dist],
-      {
-        root: paths.root,
-        // output in shell
-        verbose: true,
-        // open option of deleting
-        dry: false
-      }
-    ),
-    ExtractLess
-  ],
+  plugins: function () {
+    const plugins = [ExtractLess];
+    if (PROD) {
+      plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+          minimize: true,
+          sourceMap: true
+        })
+      )
+    }
+    return plugins
+  }(),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json', '.jsx', '.less']
   }
