@@ -13,24 +13,23 @@
   },
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": [
-    "dist",
-    "lib",
-    "es"
-  ],
+  "files": ["dist", "lib", "es"],
   "homepage": "https://github.com/ZiheLiu/react-component-start-kit",
   "scripts": {
     "build:lib": "tsc --outDir lib",
     "build:es": "tsc -m es6 --outDir es",
     "clean": "rm -rf dist lib es build",
     "webpack:normal": "webpack --config ./config/webpack.config.js",
-    "webpack:min": "NODE_ENV=production webpack --config ./config/webpack.config.js",
-    "build": "npm run clean && npm run build:lib && npm run build:es && npm run webpack:normal && npm run webpack:min",
+    "webpack:min":
+      "NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "build":
+      "npm run clean && npm run build:lib && npm run build:es && npm run webpack:normal && npm run webpack:min",
     "test:watch": "jest --watch --verbose",
     "test": "jest --verbose --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint:ts": "tsc --project ./stories/tsconfig.json && tslint --project ./stories/tsconfig.json --config tslint.json",
+    "lint:ts":
+      "tsc --project ./stories/tsconfig.json && tslint --project ./stories/tsconfig.json --config tslint.json",
     "precommit": "lint-staged",
     "prepublish": "npm run lint:ts && npm run build"
   },
@@ -82,11 +81,8 @@
     "react-dom": ">=16.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "lint:ts",
-      "prettier --write",
-      "git add"
-    ]
+    "*.{ts,tsx}": ["lint:ts"],
+    "*.{ts,tsx,js,jsx,json}": ["prettier --write", "git add"]
   },
   "prettier": {
     "printWidth": 80,
@@ -97,19 +93,10 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
     "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "json",
-      "js",
-      "jsx",
-      "node"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "json", "js", "jsx", "node"],
     "globals": {
       "ts-jest": {
         "useBabelrc": true,
@@ -117,9 +104,7 @@
       }
     },
     "setupTestFrameworkScriptFile": "./src/tests/setup.ts",
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "mapCoverage": true
   }
 }
