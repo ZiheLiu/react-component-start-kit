@@ -15,6 +15,7 @@
     "es",
     "lib",
     "storybook-static",
-    "**/*.test.tsx"
+    "**/*.test.tsx",
+    "src/tests"
   ]
 }
