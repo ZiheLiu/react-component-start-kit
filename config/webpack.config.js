@@ -17,7 +17,10 @@ const ExtractLess = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    [`${paths.projectName}`]: paths.appIndexJS
+    [`${paths.projectName}`]: [
+      paths.appIndexJS,
+      paths.appStyle
+    ]
   },
   output: {
     path: paths.dist,
@@ -30,7 +33,7 @@ module.exports = {
   target: 'node',
   // in order to ignore all modules in node_modules folder
   externals: [nodeExternals()],
-  devtool: 'source-map',
+  devtool: '#source-map',
   module: {
     rules: [
       {
