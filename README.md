@@ -13,9 +13,9 @@ Start kit for react component.
 - [x] prettier
 - [x] less
 - [x] publish
-- [ ] don't import style in index.tsx
-- [x] produce .less .css .css.map .min.css .min.css.map
-- [ ] produce .less .css when run tsc
+- [x] don't import style in index.tsx
+- [x] produce ~~.less~~ .css .css.map .min.css .min.css.map
+- [ ] ~~produce .less .css when run tsc~~
 
 
 
@@ -35,6 +35,8 @@ $ yarn install
 #       react-component-start-kit.min.js.map
 #       react-component-start-kit.css
 #       react-component-start-kit.css.map
+# only produce a total css file because this is a single component,     
+# it's unnecessary to load on demand. 
 $ yarn build
 
 # run storybook server
