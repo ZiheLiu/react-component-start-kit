@@ -14,15 +14,22 @@ const ExtractLess = new ExtractTextPlugin({
 });
 
 module.exports = {
-  entry: paths.appIndexJS,
+  entry: {
+    [`${paths.projectName}`]: paths.appIndexJS,
+    [`${paths.projectName}.min`]: paths.appIndexJS
+  },
   output: {
     path: paths.dist,
-    filename: paths.projectName + '.js'
+    filename: '[name].js',
+    libraryTarget: "umd",
+    library: paths.projectName,
+    umdNamedDefine: true
   },
   // in order to ignore built-in modules like path, fs, etc.
   target: 'node',
   // in order to ignore all modules in node_modules folder
   externals: [nodeExternals()],
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -32,7 +39,16 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: [require.resolve('ts-loader')],
+        use: [
+          {
+            loader: require.resolve('ts-loader'),
+            options: {
+              compilerOptions: {
+                declaration: false,
+              }
+            },
+          }
+        ],
         include: paths.appSrc,
         enforce: 'pre'
       },
@@ -68,7 +84,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      sourceMap: true,
+      include: /\.min\.js$/
+    }),
     new CleanWebpackPlugin(
       // delete /dist
       [paths.dist],

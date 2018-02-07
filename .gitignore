@@ -2,6 +2,9 @@
 .idea/
 
 dist/
+es/
+lib/
+build/
 coverage/
 
 node_modules/

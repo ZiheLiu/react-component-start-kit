@@ -11,5 +11,5 @@ module.exports = {
   appIndexJS: resolveApp('src/index.tsx'),
   appSrc: resolveApp('src'),
   dist: resolveApp('dist'),
-  projectName: 'color-picker'
+  projectName: 'react-component-start-kit'
 };

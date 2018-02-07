@@ -1,20 +1,38 @@
 {
   "name": "react-component-start-kit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Start Kit for react component",
-  "main": "index.ts",
   "author": "ZiheLiu",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZiheLiu/react-component-start-kit"
+  },
+  "bugs": {
+    "url": "https://github.com/ZiheLiu/react-component-start-kit/issues"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "homepage": "https://github.com/ZiheLiu/react-component-start-kit",
   "scripts": {
-    "build": "webpack --config ./config/webpack.config.js",
+    "build:lib": "tsc --outDir lib",
+    "build:es": "tsc -m es6 --outDir es",
+    "clean": "rm -rf dist lib es build",
+    "build": "npm run clean && npm run build:lib && npm run build:es && webpack --config ./config/webpack.config.js",
     "test:watch": "jest --watch --verbose",
     "test": "jest --verbose --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint:ts": "tsc --project ./stories/tsconfig.json && tslint --project ./stories/tsconfig.json --config tslint.json",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublish": "npm run lint:ts && npm run build"
   },
-  "typings": "typings/index.d.ts",
+  "typings": "lib/index.d.ts",
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.11",
     "@storybook/addon-links": "^3.3.11",
@@ -56,6 +74,10 @@
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

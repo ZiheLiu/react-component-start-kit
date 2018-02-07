@@ -12,6 +12,7 @@ Start kit for react component.
 - [x] Tslint
 - [x] prettier
 - [x] less
+- [x] publish
 
 
 
@@ -21,7 +22,16 @@ Start kit for react component.
 # install dependecies
 $ yarn install
 
-# build src/index.tsx to dist
+# build the following files:
+#   es/         --> the typings for es module
+#   lib/        --> the typings for umd module
+#   dist/
+#       react-component-start-kit.js
+#       react-component-start-kit.js.map
+#       react-component-start-kit.min.js
+#       react-component-start-kit.min.js.map
+#       react-component-start-kit.css
+#       react-component-start-kit.css.map
 $ yarn build
 
 # run storybook server
@@ -30,6 +40,10 @@ $ yarn storybook
 # run test
 # We only test files ended with .ts or .tsx
 $ yarn test
+
+# publish package to npm
+# we will run `yarn lint:ts` `yarn build` for prepublish
+$ yarn publish
 ```
 
 ## Hint
