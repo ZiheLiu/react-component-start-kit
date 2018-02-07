@@ -6,6 +6,8 @@ const nodeExternals = require('webpack-node-externals');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// if PROD, produce [name].min.js & [name].min.css
+// otherwise, produce [name].js & [name].css
 const PROD = process.env.NODE_ENV === 'production';
 
 const paths = require('./paths');
@@ -17,7 +19,7 @@ const ExtractLess = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    [`${paths.projectName}`]: [
+    [paths.projectName]: [
       paths.appIndexJS,
       paths.appStyle
     ]
@@ -51,14 +53,7 @@ module.exports = {
                 declaration: false,
               }
             },
-          }
-        ],
-        include: paths.appSrc,
-        enforce: 'pre'
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
+          },
           {
             loader: require.resolve('tslint-loader'),
             options: {
